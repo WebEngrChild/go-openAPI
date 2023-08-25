@@ -1,4 +1,4 @@
-module github.com/WebEngrChild/go-openAPI
+module github.com/WebEngrChild/go-openAPI/api
 
 go 1.19
 
