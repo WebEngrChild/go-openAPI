@@ -1,4 +1,4 @@
-FROM golang:1.21
+FROM golang:1.21 AS build-stage
 
 WORKDIR /app
 
@@ -15,4 +15,15 @@ RUN go install github.com/deepmap/oapi-codegen/cmd/oapi-codegen@latest
 # 残りのソースコードをコピー
 COPY . .
 
-CMD ["go", "run", "main.go"]
+# アプリケーションをビルドする
+RUN go build -o /app/main
+
+# 実行ステージ
+FROM golang:1.21
+
+WORKDIR /app
+
+# ビルドステージからコンパイルされたバイナリをコピー
+COPY --from=build-stage /app/main /app/main
+
+CMD ["/app/main"]
