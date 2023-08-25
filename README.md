@@ -1,6 +1,5 @@
 # Getting Started
 
-
 ```shell
 # docker up
 $ docker-compose up -d
