@@ -9,9 +9,6 @@ services:
       - "8080:8080"
     environment:
       - GO111MODULE=on
-    command: >
-      bash -c "go build -o /app/main &&
-               /app/main"
 
   front:
     build:
