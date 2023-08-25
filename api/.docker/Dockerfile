@@ -5,9 +5,6 @@ WORKDIR /app
 # モジュールのサポートを有効にする
 ENV GO111MODULE=on
 
-# oapi-codegen をインストール
-RUN go install github.com/deepmap/oapi-codegen/cmd/oapi-codegen@latest
-
 # go.modとgo.sumをコピーして依存関係をダウンロード
 COPY ./api/go.mod ./api/go.sum ./
 RUN go mod download

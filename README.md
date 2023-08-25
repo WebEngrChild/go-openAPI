@@ -6,11 +6,15 @@ go install github.com/deepmap/oapi-codegen/cmd/oapi-codegen@latest
 ```
 
 ```shell
+# generate generated.d.ts
+npx openapi-typescript spec/swagger.yaml --output front/generated.d.ts
+```
+
+```shell
 # generate generated.go
-docker-compose exec go-echo-sample \
-  oapi-codegen \
+oapi-codegen \
   -package petstore \
   -generate echo-server \
-  -o /app/api/v1/generated.go \
-  /app/spec/swagger.yaml
+  -o ./api/v1/generated.go \
+  ./spec/swagger.yaml
 ```
