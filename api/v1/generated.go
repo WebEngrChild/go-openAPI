@@ -9,6 +9,9 @@ import (
 
 // ServerInterface represents all server handlers.
 type ServerInterface interface {
+	// Returns a goodbye message.
+	// (GET /goodbye)
+	GetGoodbye(ctx echo.Context) error
 	// Returns a greeting message.
 	// (GET /hello)
 	GetHello(ctx echo.Context) error
@@ -17,6 +20,15 @@ type ServerInterface interface {
 // ServerInterfaceWrapper converts echo contexts to parameters.
 type ServerInterfaceWrapper struct {
 	Handler ServerInterface
+}
+
+// GetGoodbye converts echo context to params.
+func (w *ServerInterfaceWrapper) GetGoodbye(ctx echo.Context) error {
+	var err error
+
+	// Invoke the callback with all the unmarshaled arguments
+	err = w.Handler.GetGoodbye(ctx)
+	return err
 }
 
 // GetHello converts echo context to params.
@@ -56,6 +68,7 @@ func RegisterHandlersWithBaseURL(router EchoRouter, si ServerInterface, baseURL 
 		Handler: si,
 	}
 
+	router.GET(baseURL+"/goodbye", wrapper.GetGoodbye)
 	router.GET(baseURL+"/hello", wrapper.GetHello)
 
 }

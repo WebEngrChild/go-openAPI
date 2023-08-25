@@ -14,7 +14,3 @@ docker-compose exec go-echo-sample \
   -o /app/api/v1/generated.go \
   /app/spec/swagger.yaml
 ```
-
-```shell
-
-```

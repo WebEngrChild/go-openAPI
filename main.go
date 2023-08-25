@@ -20,6 +20,11 @@ func (s *ServerImpl) GetHello(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, Greeting{Message: "Hello, World!"})
 }
 
+// GetGoodbye は /goodbye エンドポイントのハンドラー関数です
+func (s *ServerImpl) GetGoodbye(ctx echo.Context) error {
+	return ctx.JSON(http.StatusOK, Greeting{Message: "Goodbye, World!"})
+}
+
 func main() {
 	e := echo.New()
 
