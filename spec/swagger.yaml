@@ -12,10 +12,25 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Greeting'
+                $ref: '#/components/schemas/hello'
+  /goodbye:
+    get:
+      summary: Returns a goodbye message.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/goodbye'
 components:
   schemas:
-    Greeting:
+    hello:
+      type: object
+      properties:
+        message:
+          type: string
+    goodbye:
       type: object
       properties:
         message:
