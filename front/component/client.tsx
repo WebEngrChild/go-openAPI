@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { components } from '@/generated';  // 1. 自動生成されたコードのパスを正確に指定してください。
+import { components } from '@/generated';
 
 export default function Client() {
     const [message, setMessage] = useState<string>("");
