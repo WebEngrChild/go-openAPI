@@ -38,5 +38,5 @@ Ok to proceed? (y) y
 
 ```shell
 # set up mock server
-$ docker run --init --rm -v $(pwd):/tmp -p 4010:4010 stoplight/prism:4 mock -h 0.0.0.0 "/tmp/openapi.yml"
+$ docker run --init --rm -v $(pwd)/spec/openapi.yaml:/openapi.yaml -p 4010:4010 stoplight/prism:4 mock -h 0.0.0.0 /openapi.yaml
 ```
